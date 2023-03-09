@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
+import { AppMaterialModule } from '../shared/angular-material/app-material.module';
 import { PersonRoutingModule } from './person-routing.module';
 import { PersonComponent } from './person/person.component';
 
@@ -13,7 +13,7 @@ import { PersonComponent } from './person/person.component';
   imports: [
     CommonModule,
     PersonRoutingModule,
-    AngularMaterialModule
+    AppMaterialModule
   ]
 })
 export class PersonModule { }
