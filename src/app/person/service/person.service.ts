@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 
 import { environment } from '../../../environment/environment.prod';
 import { Person } from '../model/person';
@@ -15,6 +15,6 @@ export class PersonService {
   constructor(private http: HttpClient) { }
 
   list(): Observable<Person[]>{
-    return this.http.get<Person[]>(`${this.URI}/all`);
+    return this.http.get<Person[]>(`${this.URI}/all`).pipe(delay(5000));
   }
 }

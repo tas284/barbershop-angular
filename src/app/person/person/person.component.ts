@@ -12,11 +12,11 @@ import { PersonService } from '../service/person.service';
 export class PersonComponent implements OnInit{
 
   // people: Person[] = [ { id: '1', firstName: 'Tiago', lastName: 'Saldanha', phone: '51 9501-0615' } ];
-  people$!: Person[];
+  people$!: Observable<Person[]>;
   displayedColumns = [ 'id', 'firstName', 'lastName', 'phone' ];
 
   constructor(private service: PersonService){
-    this.service.list().subscribe(value => this.people$ = value);
+    this.people$ = this.service.list();
   }
 
   ngOnInit(): void {
