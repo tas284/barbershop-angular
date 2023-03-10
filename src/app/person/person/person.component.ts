@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of, pipe } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Person } from '../model/person';
 import { PersonService } from '../service/person.service';
@@ -11,12 +13,26 @@ import { PersonService } from '../service/person.service';
 })
 export class PersonComponent implements OnInit{
 
-  // people: Person[] = [ { id: '1', firstName: 'Tiago', lastName: 'Saldanha', phone: '51 9501-0615' } ];
-  people$!: Observable<Person[]>;
+  people$: Observable<Person[]> | null = null;
   displayedColumns = [ 'id', 'firstName', 'lastName', 'phone' ];
 
-  constructor(private service: PersonService){
-    this.people$ = this.service.list();
+  constructor(
+    private service: PersonService,
+    private dialog: MatDialog
+  ){
+    this.people$ = this.service.list()
+      .pipe(
+        catchError(err => {
+          this.onError('Erro ao carregar a lista de clientes!');
+          return of([]);
+        })
+      );
+  }
+
+  onError(msgError: string){
+    this.dialog.open(ErrorDialogComponent, {
+      data: msgError
+    });
   }
 
   ngOnInit(): void {
