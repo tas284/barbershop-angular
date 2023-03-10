@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take, tap, delay, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { environment } from '../../../environment/environment.prod';
 import { Person } from '../model/person';
@@ -17,7 +17,7 @@ export class PersonService {
   list(): Observable<Person[]>{
     return this.http.get<Person[]>(`${this.URI}/all`)
       .pipe(
-        delay(2000)
+        //delay(2000)
       );
   }
 }

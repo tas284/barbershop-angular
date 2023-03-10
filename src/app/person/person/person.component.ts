@@ -14,7 +14,7 @@ import { PersonService } from '../service/person.service';
 export class PersonComponent implements OnInit{
 
   people$: Observable<Person[]> | null = null;
-  displayedColumns = [ 'id', 'firstName', 'lastName', 'phone' ];
+  displayedColumns = [ 'id', 'firstName', 'lastName', 'phone', 'typePerson' ];
 
   constructor(
     private service: PersonService,

@@ -2,5 +2,6 @@ export interface Person {
   id: string,
   firstName: string,
   lastName: string,
-  phone: string
+  phone: string,
+  type: string
 }
