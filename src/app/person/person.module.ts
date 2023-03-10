@@ -5,11 +5,13 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { PersonRoutingModule } from './person-routing.module';
 import { PersonComponent } from './person/person.component';
+import { PersonFormComponent } from './person-form/person-form.component';
 
 
 @NgModule({
   declarations: [
-    PersonComponent
+    PersonComponent,
+    PersonFormComponent
   ],
   imports: [
     CommonModule,
