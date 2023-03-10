@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-person-form',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./person-form.component.scss']
 })
 export class PersonFormComponent {
+
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder){
+    this.form = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      phone: [''],
+      type: ['']
+    });
+  }
 
 }
