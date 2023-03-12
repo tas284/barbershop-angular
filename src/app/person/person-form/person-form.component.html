@@ -6,7 +6,7 @@
     </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome" formControlName="firstName">
       </mat-form-field>
@@ -20,12 +20,16 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <input matInput placeholder="Cliente ou Barbeiro" formControlName="phone">
+        <mat-label>Cliente/Barbeiro</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="customer">Cliente</mat-option>
+          <mat-option value="barber">Barbeiro</mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-raised-button >Cancelar</button>
-    <button mat-raised-button color="primary">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
   </mat-card-actions>
 </mat-card>

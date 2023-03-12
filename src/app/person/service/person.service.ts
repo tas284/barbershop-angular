@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, first, Observable } from 'rxjs';
 
 import { environment } from '../../../environment/environment.prod';
 import { Person } from '../model/person';
@@ -17,7 +17,16 @@ export class PersonService {
   list(): Observable<Person[]>{
     return this.http.get<Person[]>(`${this.URI}/all`)
       .pipe(
-        //delay(2000)
+        first(),
+        delay(2000)
+      );
+  }
+
+  save(person: Person){
+    return this.http.post<Person>(`${this.URI}`, person)
+      .pipe(
+        first(),
+        delay(2000)
       );
   }
 }
