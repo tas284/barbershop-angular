@@ -9,6 +9,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Backend
 Depends on this project for run Backend: https://github.com/tas284/aspnet-core
 
+## Add support on docker
+Run `docker build -t app .`
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
