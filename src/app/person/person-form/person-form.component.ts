@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 import { PersonService } from '../service/person.service';
 
@@ -12,19 +13,30 @@ import { PersonService } from '../service/person.service';
 })
 export class PersonFormComponent {
 
-  form: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private service: PersonService,
     private snackBar: MatSnackBar,
     private location: Location,
-    private fb: FormBuilder
-  ){
-    this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      type: ['', Validators.required]
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ){ }
+
+  ngOnInit(): void {
+
+    const person = this.route.snapshot.data['person'];
+    // if(person.id !== ''){
+    //   this.title = 'Edit';
+    //   this.fullName = `${person.firstName}`
+    // }
+
+    this.form = this.formBuilder.group({
+      id: [person.id],
+      firstName: [person.firstName, Validators.required],
+      lastName: [person.lastName],
+      phone: [person.phone],
+      type: [person.type]
     });
   }
 

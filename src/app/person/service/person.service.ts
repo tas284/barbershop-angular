@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, Observable } from 'rxjs';
+import { delay, first, Observable, take } from 'rxjs';
 
 import { environment } from '../../../environment/environment.prod';
 import { Person } from '../model/person';
@@ -18,7 +18,7 @@ export class PersonService {
     return this.http.get<Person[]>(`${this.URI}/all`)
       .pipe(
         first(),
-        delay(2000)
+        //delay(500)
       );
   }
 
@@ -26,7 +26,22 @@ export class PersonService {
     return this.http.post<Person>(`${this.URI}`, person)
       .pipe(
         first(),
-        delay(2000)
+        delay(500)
+      );
+  }
+
+  get(id: string){
+    return this.http.get<Person>(`${this.URI}/${id}`)
+      .pipe(
+        first()
+      );
+  }
+
+  delete(id: string){
+    return this.http.delete(`${this.URI}/${id}`, { responseType: 'text' })
+      .pipe(
+        take(1),
+        delay(500)
       );
   }
 }
