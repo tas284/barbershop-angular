@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductResolverGuard } from '../guard/product-resolver.guard';
+import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
-  // { path: 'new', component: PersonFormComponent, resolve: { person: PersonResolverGuard } },
-  // { path: 'edit/:id', component: PersonFormComponent, resolve: { person: PersonResolverGuard } }
+  { path: 'new', component: ProductFormComponent, resolve: { product: ProductResolverGuard } },
+  { path: 'edit/:id', component: ProductFormComponent, resolve: { product: ProductResolverGuard } }
 ];
 
 @NgModule({

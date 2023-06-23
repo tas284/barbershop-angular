@@ -26,10 +26,6 @@ export class PersonFormComponent {
   ngOnInit(): void {
 
     const person = this.route.snapshot.data['person'];
-    // if(person.id !== ''){
-    //   this.title = 'Edit';
-    //   this.fullName = `${person.firstName}`
-    // }
 
     this.form = this.formBuilder.group({
       id: [person.id],
@@ -61,5 +57,4 @@ export class PersonFormComponent {
   onError(msgError: string){
     this.snackBar.open(msgError, '', { duration: 5 })
   }
-
 }
