@@ -8,26 +8,32 @@
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width">
+        <mat-label>Nome</mat-label>
         <input matInput placeholder="Nome" formControlName="name">
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Preco R$</mat-label>
         <input matInput placeholder="Preco" formControlName="price">
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Quantidade</mat-label>
         <input matInput placeholder="Quantidade" formControlName="quantity">
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Marca</mat-label>
         <input matInput placeholder="Marca" formControlName="brand">
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Data de Cadastro</mat-label>
         <input matInput placeholder="Data de Cadastro" formControlName="createdAt">
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Data de Atualizacao</mat-label>
         <input matInput placeholder="Data de Atualização" formControlName="updatedAt">
       </mat-form-field>
 
