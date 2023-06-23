@@ -2,24 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../service/product.service';
+import { Product } from '../model/product';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
-import { Person } from '../model/person';
-import { PersonService } from '../service/person.service';
-
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
-export class PersonComponent implements OnInit{
-
-  people$: Observable<Person[]> | null = null;
-  displayedColumns = [ 'firstName', 'phone', 'typePerson', 'actions' ];
+export class ProductComponent implements OnInit {
+  products$: Observable<Product[]> | null = null;
+  displayedColumns = [ 'name', 'price', 'quantity', 'brand', 'status', 'createdAt', 'updatedAt' ];
 
   constructor(
-    private service: PersonService,
+    private service: ProductService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
@@ -31,8 +29,9 @@ export class PersonComponent implements OnInit{
   ngOnInit(): void { }
 
   load(): void {
-    this.people$ = this.service.list()
+    this.products$ = this.service.list()
       .pipe(
+        // value => console.log(value),
         catchError(err => {
           this.onError('Erro ao carregar a lista de clientes!');
           return of([]);
@@ -55,10 +54,10 @@ export class PersonComponent implements OnInit{
       .subscribe(
         value => {
           this.load()
-          this.snackBar.open('Cliente removido com sucesso!')
+          this.snackBar.open('Produto removido com sucesso!')
         },
         error => {
-          this.onError(`Erro ao cadastrar Cliente/Barbeiro!`)
+          this.onError(`Erro ao cadastrar Produto!`)
         }
       );
   }
