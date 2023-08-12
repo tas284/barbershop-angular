@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -7,7 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { SharedModule } from './shared/shared.module';
-import { ProductModule } from './product/product.module';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr)
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { ProductModule } from './product/product.module';
     SharedModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
