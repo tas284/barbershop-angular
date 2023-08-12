@@ -17,16 +17,14 @@ export class PersonService {
   list(): Observable<Person[]>{
     return this.http.get<Person[]>(`${this.URI}/all`)
       .pipe(
-        first(),
-        //delay(500)
+        first()
       );
   }
 
   save(person: Person){
     return this.http.post<Person>(`${this.URI}`, person)
       .pipe(
-        first(),
-        delay(500)
+        first()
       );
   }
 
@@ -40,8 +38,7 @@ export class PersonService {
   delete(id: string){
     return this.http.delete(`${this.URI}/${id}`, { responseType: 'text' })
       .pipe(
-        take(1),
-        delay(500)
+        take(1)
       );
   }
 }

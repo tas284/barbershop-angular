@@ -39,17 +39,7 @@ export class ProductFormComponent {
   }
 
   onSubmit() {
-    this.service.save(this.form.value)
-      .subscribe(
-        value => {
-          this.snackBar.open('Produto cadastrado com sucesso!')
-          this.onCancel()
-        },
-        error => {
-          this.onError(`Erro ao cadastrar Produto!`)
-          this.onCancel()
-        }
-      )
+    this.onSave();
   }
 
   onCancel(){
@@ -58,5 +48,39 @@ export class ProductFormComponent {
 
   onError(msgError: string){
     this.snackBar.open(msgError, '', { duration: 5 })
+  }
+
+  isNew(): boolean{
+   const id = this.route.snapshot.params["id"];
+   return id === undefined ? true : false;
+  }
+
+  onSave() {
+    debugger;
+    if(this.isNew()){
+      this.service.save(this.form.value)
+        .subscribe(
+          value => {
+            this.snackBar.open('Produto cadastrado com sucesso!')
+            this.onCancel()
+          },
+          error => {
+            this.onError(`Erro ao cadastrar Produto!`)
+            this.onCancel()
+          }
+        )
+    } else{
+      this.service.update(this.form.value, this.form.value.id)
+        .subscribe(
+          value => {
+            this.snackBar.open('Produto cadastrado com sucesso!')
+            this.onCancel()
+          },
+          error => {
+            this.onError(`Erro ao cadastrar Produto!`)
+            this.onCancel()
+          }
+        )
+    }
   }
 }
