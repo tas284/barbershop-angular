@@ -57,8 +57,8 @@ export class ProductFormComponent {
     this.form.value.status = JSON.parse(this.form.value.status);
   }
 
-  isActiveToString(status: string){
-    return status === "true" ? "true" : "false";
+  isActiveToString(status: boolean){
+    return status ? "true" : "false";
   }
 
   onSave() {
