@@ -16,16 +16,21 @@ export class ProductService {
   list(): Observable<Product[]>{
     return this.http.get<Product[]>(`${this.URI}/all`)
       .pipe(
-        first(),
-        //delay(500)
+        first()
       );
   }
 
   save(product: Product){
     return this.http.post<Product>(`${this.URI}`, product)
       .pipe(
-        first(),
-        delay(500)
+        first()
+      );
+  }
+
+  update(product: Product, id: string){
+    return this.http.put<string>(`${this.URI}/${id}`, product)
+      .pipe(
+        first()
       );
   }
 
@@ -39,8 +44,7 @@ export class ProductService {
   delete(id: string){
     return this.http.delete(`${this.URI}/${id}`, { responseType: 'text' })
       .pipe(
-        take(1),
-        delay(500)
+        take(1)
       );
   }
 }

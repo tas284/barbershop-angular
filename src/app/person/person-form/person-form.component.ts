@@ -40,11 +40,11 @@ export class PersonFormComponent {
     this.service.save(this.form.value)
       .subscribe(
         value => {
-          this.snackBar.open('Cliente cadastrado com sucesso!')
+          this.snackBar.open('Pessoa salva com sucesso!')
           this.onCancel()
         },
         error => {
-          this.onError(`Erro ao cadastrar Cliente/Barbeiro!`)
+          this.onError(`Erro ao savar Pessoa!`)
           this.onCancel()
         }
       )
