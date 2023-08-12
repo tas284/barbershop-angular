@@ -23,16 +23,14 @@ export class ProductFormComponent {
   ){ }
 
   ngOnInit(): void {
-
     const product = this.route.snapshot.data['product'];
-
     this.form = this.formBuilder.group({
       id: [product.id],
       name: [product.name, Validators.required],
       price: [product.price],
       quantity: [product.quantity],
       brand: [product.brand],
-      status: [product.status],
+      status: [this.isActiveToString(product.status)],
       createdAt: [product.createdAt],
       updatedAt: [product.createdAt]
     });
@@ -55,8 +53,16 @@ export class ProductFormComponent {
    return id === undefined ? true : false;
   }
 
+  isActiveToBoolean(){
+    this.form.value.status = JSON.parse(this.form.value.status);
+  }
+
+  isActiveToString(status: string){
+    return status === "true" ? "true" : "false";
+  }
+
   onSave() {
-    debugger;
+    this.isActiveToBoolean();
     if(this.isNew()){
       this.service.save(this.form.value)
         .subscribe(
@@ -73,11 +79,11 @@ export class ProductFormComponent {
       this.service.update(this.form.value, this.form.value.id)
         .subscribe(
           value => {
-            this.snackBar.open('Produto cadastrado com sucesso!')
+            this.snackBar.open('Produto atualizado com sucesso!')
             this.onCancel()
           },
           error => {
-            this.onError(`Erro ao cadastrar Produto!`)
+            this.onError(`Erro ao atualizar Produto!`)
             this.onCancel()
           }
         )

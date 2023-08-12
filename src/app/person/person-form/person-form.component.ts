@@ -54,7 +54,6 @@ export class PersonFormComponent {
   }
 
   onSave() {
-    debugger;
     if(this.isNew()){
       this.service.save(this.form.value)
       .subscribe(

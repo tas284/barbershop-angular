@@ -28,7 +28,7 @@ export class ProductService {
   }
 
   update(product: Product, id: string){
-    return this.http.put<string>(`${this.URI}/${id}`, product)
+    return this.http.put<Product>(`${this.URI}/${id}`, product)
       .pipe(
         first()
       );
