@@ -28,6 +28,13 @@ export class PersonService {
       );
   }
 
+  update(person: Person, id: string){
+    return this.http.put<Person>(`${this.URI}/${id}`, person)
+      .pipe(
+        first()
+      );
+  }
+
   get(id: string){
     return this.http.get<Person>(`${this.URI}/${id}`)
       .pipe(

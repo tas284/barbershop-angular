@@ -37,17 +37,7 @@ export class PersonFormComponent {
   }
 
   onSubmit() {
-    this.service.save(this.form.value)
-      .subscribe(
-        value => {
-          this.snackBar.open('Pessoa salva com sucesso!')
-          this.onCancel()
-        },
-        error => {
-          this.onError(`Erro ao savar Pessoa!`)
-          this.onCancel()
-        }
-      )
+    this.onSave()
   }
 
   onCancel(){
@@ -56,5 +46,40 @@ export class PersonFormComponent {
 
   onError(msgError: string){
     this.snackBar.open(msgError, '', { duration: 5 })
+  }
+
+  isNew() {
+    const id = this.route.snapshot.params["id"];
+    return id === undefined ? true : false;
+  }
+
+  onSave() {
+    debugger;
+    if(this.isNew()){
+      this.service.save(this.form.value)
+      .subscribe(
+        value => {
+          this.snackBar.open('Pessoa cadastrada com sucesso!')
+          this.onCancel()
+        },
+        error => {
+          this.onError(`Erro ao cadastrar Pessoa!`)
+          this.onCancel()
+        }
+      )
+    } else {
+      const id = this.route.snapshot.params["id"];
+      this.service.update(this.form.value, id)
+        .subscribe(
+          value => {
+            this.snackBar.open('Pessoa atualizada com sucesso!')
+            this.onCancel()
+          },
+          error => {
+            this.onError(`Erro ao atualizar Pessoa!`)
+            this.onCancel()
+          }
+      )
+    }
   }
 }
