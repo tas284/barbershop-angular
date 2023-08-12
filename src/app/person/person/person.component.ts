@@ -34,7 +34,7 @@ export class PersonComponent implements OnInit{
     this.people$ = this.service.list()
       .pipe(
         catchError(err => {
-          this.onError('Erro ao carregar a lista de clientes!');
+          this.onError('Erro ao carregar a lista de pessoas!');
           return of([]);
         })
       );
@@ -55,10 +55,10 @@ export class PersonComponent implements OnInit{
       .subscribe(
         value => {
           this.load()
-          this.snackBar.open('Cliente removido com sucesso!')
+          this.snackBar.open('Cadastro removido com sucesso!')
         },
         error => {
-          this.onError(`Erro ao cadastrar Cliente/Barbeiro!`)
+          this.onError(`Erro ao remover este cadastro!`)
         }
       );
   }

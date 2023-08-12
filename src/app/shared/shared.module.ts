@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { PersonPipe } from './pipes/person.pipe';
+import { ProductPipe } from './pipes/product.pipe';
 
 @NgModule({
   declarations: [
     ErrorDialogComponent,
-    PersonPipe
+    PersonPipe,
+    ProductPipe
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { PersonPipe } from './pipes/person.pipe';
   ],
   exports: [
     ErrorDialogComponent,
-    PersonPipe
+    PersonPipe,
+    ProductPipe
   ]
 })
 export class SharedModule { }
