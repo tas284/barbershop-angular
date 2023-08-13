@@ -34,7 +34,7 @@ export class PersonComponent implements OnInit{
     this.people$ = this.service.list()
       .pipe(
         catchError(err => {
-          this.onError('Erro ao carregar a lista de pessoas!');
+          this.onMessage('Erro ao carregar a lista de pessoas!', 10000);
           return of([]);
         })
       );
@@ -55,11 +55,15 @@ export class PersonComponent implements OnInit{
       .subscribe(
         value => {
           this.load()
-          this.snackBar.open('Cadastro removido com sucesso!')
+          this.onMessage('Cadastro removido com sucesso!')
         },
         error => {
-          this.onError(`Erro ao remover este cadastro!`)
+          this.onMessage(`Erro ao remover este cadastro.`, 10000)
         }
       );
+  }
+
+  onMessage(message: string, duration = 5000){
+    this.snackBar.open(message, '', { duration: duration})
   }
 }

@@ -31,9 +31,8 @@ export class ProductComponent implements OnInit {
   load(): void {
     this.products$ = this.service.list()
       .pipe(
-        // value => console.log(value),
         catchError(err => {
-          this.onError('Erro ao carregar a lista de clientes!');
+          this.onMessage('Erro ao carregar a lista de clientes!', 10000);
           return of([]);
         })
       );
@@ -54,11 +53,15 @@ export class ProductComponent implements OnInit {
       .subscribe(
         value => {
           this.load()
-          this.snackBar.open('Produto removido com sucesso!')
+          this.onMessage('Produto removido com sucesso!')
         },
         error => {
-          this.onError(`Erro ao cadastrar Produto!`)
+          this.onMessage(`Erro ao cadastrar Produto: ${error.error}`, 10000)
         }
       );
+  }
+
+  onMessage(message: string, duration = 5000){
+    this.snackBar.open(message, '', { duration: duration})
   }
 }

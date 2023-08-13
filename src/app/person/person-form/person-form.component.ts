@@ -71,10 +71,10 @@ export class PersonFormComponent {
         .subscribe(
           value => {
             this.onMessage('Pessoa atualizada com sucesso!')
+            this.onCancel()
           },
           error => {
             this.onMessage(`Erro ao atualizar Pessoa: ${error.error}`, 10000)
-            this.onCancel()
           }
       )
     }
