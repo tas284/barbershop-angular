@@ -24,8 +24,8 @@ export class ProductResolverGuard implements Resolve<Product> {
       quantity: 0,
       brand: '',
       status: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: null,
+      updatedAt: null
     })
   }
 }

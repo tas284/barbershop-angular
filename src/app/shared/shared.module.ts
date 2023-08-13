@@ -5,6 +5,7 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { PersonPipe } from './pipes/person.pipe';
 import { ProductPipe } from './pipes/product.pipe';
+import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,12 @@ import { ProductPipe } from './pipes/product.pipe';
   ],
   imports: [
     CommonModule,
-    AppMaterialModule
+    AppMaterialModule,
+    DatepickerComponent
   ],
   exports: [
     ErrorDialogComponent,
+    DatepickerComponent,
     PersonPipe,
     ProductPipe
   ]

@@ -5,6 +5,6 @@ export interface Product {
   quantity: number,
   brand: string,
   status: boolean,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: Date | null,
+  updatedAt: Date | null
 }
