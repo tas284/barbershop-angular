@@ -44,8 +44,8 @@ export class ProductFormComponent {
     this.location.back();
   }
 
-  onError(msgError: string){
-    this.snackBar.open(msgError, '', { duration: 5 })
+  onMessage(message: string, duration = 5000){
+    this.snackBar.open(message, '', { duration: duration })
   }
 
   isNew(): boolean{
@@ -67,24 +67,22 @@ export class ProductFormComponent {
       this.service.save(this.form.value)
         .subscribe(
           value => {
-            this.snackBar.open('Produto cadastrado com sucesso!')
+            this.onMessage('Produto cadastrado com sucesso!')
             this.onCancel()
           },
           error => {
-            this.onError(`Erro ao cadastrar Produto!`)
-            this.onCancel()
+            this.onMessage(`Erro ao cadastrar Produto: ${error.error}`, 10000)
           }
         )
     } else{
       this.service.update(this.form.value, this.form.value.id)
         .subscribe(
           value => {
-            this.snackBar.open('Produto atualizado com sucesso!')
+            this.onMessage('Produto atualizado com sucesso!')
             this.onCancel()
           },
           error => {
-            this.onError(`Erro ao atualizar Produto!`)
-            this.onCancel()
+            this.onMessage(`Erro ao atualizar Produto: ${error.error}`, 10000)
           }
         )
     }
