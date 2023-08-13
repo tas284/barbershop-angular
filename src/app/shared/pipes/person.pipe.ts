@@ -7,10 +7,10 @@ export class PersonPipe implements PipeTransform {
 
   transform(value: string): string {
     switch(value){
-      case 'customer': return 'code';
-      case 'barber': return 'computer';
+      case 'customer': return 'person';
+      case 'barber': return 'content_cut';
     }
-    return 'computer';
+    return 'content_cut';
   }
 
 }

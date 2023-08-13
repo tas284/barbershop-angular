@@ -44,8 +44,8 @@ export class PersonFormComponent {
     this.location.back();
   }
 
-  onError(msgError: string){
-    this.snackBar.open(msgError, '', { duration: 5 })
+  onMessage(message: string, duration = 5000){
+    this.snackBar.open(message, '', { duration: duration })
   }
 
   isNew() {
@@ -58,12 +58,11 @@ export class PersonFormComponent {
       this.service.save(this.form.value)
       .subscribe(
         value => {
-          this.snackBar.open('Pessoa cadastrada com sucesso!')
+          this.onMessage('Pessoa cadastrada com sucesso!')
           this.onCancel()
         },
         error => {
-          this.onError(`Erro ao cadastrar Pessoa!`)
-          this.onCancel()
+          this.onMessage(`Erro ao cadastrar Pessoa: ${error.error}`, 10000)
         }
       )
     } else {
@@ -71,11 +70,10 @@ export class PersonFormComponent {
       this.service.update(this.form.value, id)
         .subscribe(
           value => {
-            this.snackBar.open('Pessoa atualizada com sucesso!')
-            this.onCancel()
+            this.onMessage('Pessoa atualizada com sucesso!')
           },
           error => {
-            this.onError(`Erro ao atualizar Pessoa!`)
+            this.onMessage(`Erro ao atualizar Pessoa: ${error.error}`, 10000)
             this.onCancel()
           }
       )
