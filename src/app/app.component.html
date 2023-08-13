@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
   <span>Hermestol Barbershop</span>
+  <button mat-button [matMenuTriggerFor]="menu">Cadastros</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="product" routerLinkActive="product">Cadastro de Produtos</button>
+    <button mat-menu-item routerLink="person">Cadastro de Pessoas</button>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="content">
