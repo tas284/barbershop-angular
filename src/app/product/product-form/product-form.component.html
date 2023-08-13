@@ -14,12 +14,12 @@
 
       <mat-form-field class="field-item">
         <mat-label>Preco R$</mat-label>
-        <input matInput placeholder="Preco" formControlName="price">
+        <input matInput placeholder="Preco" formControlName="price" type="number">
       </mat-form-field>
 
       <mat-form-field class="field-item">
         <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Quantidade" formControlName="quantity">
+        <input matInput placeholder="Quantidade" formControlName="quantity" type="number">
       </mat-form-field>
 
       <mat-form-field class="field-item">
@@ -35,15 +35,17 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="field-item">
-        <mat-label>Data de Cadastro</mat-label>
-        <input matInput placeholder="Data de Cadastro" formControlName="createdAt">
-      </mat-form-field>
+      <div *ngIf="!isNew()">
+        <mat-form-field class="field-item">
+          <mat-label>Data de Cadastro</mat-label>
+          <input matInput placeholder="Data de Cadastro" formControlName="createdAt">
+        </mat-form-field>
 
-      <mat-form-field class="field-item">
-        <mat-label>Data de Atualizacao</mat-label>
-        <input matInput placeholder="Data de Atualização" formControlName="updatedAt">
-      </mat-form-field>
+        <mat-form-field class="field-item">
+          <mat-label>Data de Atualizacao</mat-label>
+          <input matInput placeholder="Data de Atualização" formControlName="updatedAt">
+        </mat-form-field>
+      </div>
 
     </form>
   </mat-card-content>
