@@ -9,8 +9,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Backend
 Depends on this project for run Backend: https://github.com/tas284/aspnet-core
 
-## Add support on docker
+## Build image docker
 Run `docker build -t app .`
+
+## Run with docker compose detached(-d)
+Run `docker compose up -d`
 
 ## Code scaffolding
 

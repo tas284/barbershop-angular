@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: app
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
