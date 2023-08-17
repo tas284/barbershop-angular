@@ -31,8 +31,8 @@ export class ProductFormComponent {
       quantity: [product.quantity],
       brand: [product.brand],
       status: [this.isActiveToString(product.status)],
-      createdAt: [product.createdAt],
-      updatedAt: [product.createdAt]
+      updatedAt: [product.updatedAt],
+      createdAt: [product.createdAt]
     });
   }
 
@@ -53,11 +53,11 @@ export class ProductFormComponent {
    return id === undefined ? true : false;
   }
 
-  isActiveToBoolean(){
+  isActiveToBoolean(): void {
     this.form.value.status = JSON.parse(this.form.value.status);
   }
 
-  isActiveToString(status: boolean){
+  isActiveToString(status: boolean): string {
     return status ? "true" : "false";
   }
 

@@ -38,17 +38,17 @@
       <div *ngIf="!isNew()">
 
         <mat-form-field class="field-item">
-          <mat-label>Data de Cadastro</mat-label>
-          <input matInput [matDatepicker]="createdAt" placeholder="Data de Cadastro" formControlName="createdAt">
-          <mat-datepicker-toggle matIconSuffix [for]="createdAt"></mat-datepicker-toggle>
-          <mat-datepicker #createdAt></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field class="field-item">
           <mat-label>Data de Atualizacao</mat-label>
           <input matInput [matDatepicker]="updatedAt" placeholder="Data de Atualização" formControlName="updatedAt">
           <mat-datepicker-toggle matIconSuffix [for]="updatedAt"></mat-datepicker-toggle>
           <mat-datepicker #updatedAt></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="field-item">
+          <mat-label>Data de Cadastro</mat-label>
+          <input matInput [matDatepicker]="createdAt" placeholder="Data de Cadastro" formControlName="createdAt">
+          <mat-datepicker-toggle matIconSuffix [for]="createdAt"></mat-datepicker-toggle>
+          <mat-datepicker #createdAt></mat-datepicker>
         </mat-form-field>
 
       </div>
