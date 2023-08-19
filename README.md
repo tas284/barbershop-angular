@@ -19,11 +19,14 @@ Run `docker compose up -d`
 
 ## Build and Run on Nginx Web Server with docker
 
+Run `npm run build`
+
 ```bash
-npm run build
-```
-```bash
-docker run -p 80:80 --rm --mount type=bind,source="$(pwd)/config/nginx.conf,target=/etc/nginx/conf.d/default.conf" --mount type=bind,source="$(pwd)"/dist/client-app,target=/usr/share/nginx/html -v /var/cache/nginx --name client-app nginx:alpine
+docker run -p 80:80 --rm \
+  --mount type=bind,source="$(pwd)/config/nginx.conf,target=/etc/nginx/conf.d/default.conf" \
+  --mount type=bind,source="$(pwd)/dist/client-app,target=/usr/share/nginx/html" \
+  -v /var/cache/nginx \
+  --name client-app nginx:alpine
 ```
 
 ## Code scaffolding
