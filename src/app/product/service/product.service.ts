@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, first, Observable, take } from 'rxjs';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 import { Product } from '../model/product';
 
 @Injectable({

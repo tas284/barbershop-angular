@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, first, Observable, take } from 'rxjs';
 
-import { environment } from '../../../environment/environment.prod';
+import { environment } from '../../../environment/environment';
 import { Person } from '../model/person';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, first } from 'rxjs';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,9 @@ export class PublicService {
       .pipe(
         first()
       )
+  }
+
+  getEnvironment(): string {
+    return environment.production ? "Production" : "Development";
   }
 }
