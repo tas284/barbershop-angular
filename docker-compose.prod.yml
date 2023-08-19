@@ -3,8 +3,7 @@ version: '3.9'
 services:
   app:
     container_name: app
-    build:
-      dockerfile: Dockerfile
+    image: tiagosaldanha/app-barbershop-nginx:latest
     restart: always
     ports:
       - "80:80"
@@ -29,7 +28,7 @@ services:
     image: tiagosaldanha/api-barbershop-aspnet:latest
     restart: always
     environment:
-      - "ASPNETCORE_ENVIRONMENT=Development"
+      - "ASPNETCORE_ENVIRONMENT=Production"
       - "MongoDBSettings__ConnectionString=mongodb://my-mongodb:27017"
     depends_on:
       - my-mongodb

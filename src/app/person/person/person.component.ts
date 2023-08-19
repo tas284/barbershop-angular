@@ -18,6 +18,7 @@ export class PersonComponent implements OnInit{
 
   people$: Observable<Person[]> | null = null;
   version?: string;
+  appEnvironment?: string;
   displayedColumns = [ 'firstName', 'phone', 'typePerson', 'actions' ];
 
   constructor(
@@ -46,6 +47,8 @@ export class PersonComponent implements OnInit{
         .subscribe(
           data => this.version = data
         )
+
+      this.appEnvironment = this.publicService.getEnvironment();
   }
 
   onError(msgError: string){

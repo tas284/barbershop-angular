@@ -13,11 +13,11 @@ Depends on this project for run Backend: https://github.com/tas284/aspnet-core
 
 Run `docker build -t app .`
 
-## Run with docker compose detached(-d)
+## Run with docker compose
 
 Run `docker compose up -d`
 
-## Build and Run on Nginx Web Server with docker
+## Try yourself Build and Run on Nginx Web Server with docker
 
 Run `npm run build`
 
@@ -28,6 +28,10 @@ docker run -p 80:80 --rm \
   -v /var/cache/nginx \
   --name client-app nginx:alpine
 ```
+
+## Run Backend and Frontend in mode production with docker
+
+Run `docker compose -f .\docker-compose.prod.yml up`
 
 ## Code scaffolding
 
