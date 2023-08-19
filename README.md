@@ -10,10 +10,17 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 Depends on this project for run Backend: https://github.com/tas284/aspnet-core
 
 ## Build image docker
+
 Run `docker build -t app .`
 
 ## Run with docker compose detached(-d)
+
 Run `docker compose up -d`
+
+## Build and Run on Nginx Web Server with docker
+
+Run `npm run build`
+Run `docker run -p 80:80 --rm --mount type=bind,source="$(pwd)/config/nginx.conf,target=/etc/nginx/conf.d/default.conf" --mount type=bind,source="$(pwd)"/dist/client-app,target=/usr/share/nginx/html -v /var/cache/nginx --name client-app nginx:alpine`
 
 ## Code scaffolding
 
