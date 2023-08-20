@@ -7,7 +7,6 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 
 import { Person } from '../model/person';
 import { PersonService } from '../service/person.service';
-import { PublicService } from 'src/app/shared/services/public.service';
 
 @Component({
   selector: 'app-person',
@@ -17,8 +16,6 @@ import { PublicService } from 'src/app/shared/services/public.service';
 export class PersonComponent implements OnInit{
 
   people$: Observable<Person[]> | null = null;
-  version?: string;
-  appEnvironment?: string;
   displayedColumns = [ 'firstName', 'phone', 'typePerson', 'actions' ];
 
   constructor(
@@ -26,8 +23,7 @@ export class PersonComponent implements OnInit{
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private route: ActivatedRoute,
-    private publicService: PublicService
+    private route: ActivatedRoute
   ){
     this.load();
   }
@@ -42,13 +38,6 @@ export class PersonComponent implements OnInit{
           return of([]);
         })
       );
-
-      this.publicService.version()
-        .subscribe(
-          data => this.version = data
-        )
-
-      this.appEnvironment = this.publicService.getEnvironment();
   }
 
   onError(msgError: string){

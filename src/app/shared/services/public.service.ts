@@ -19,7 +19,7 @@ export class PublicService {
       )
   }
 
-  getEnvironment(): string {
+  appEnvironment(): string {
     return environment.production ? "Production" : "Development";
   }
 }

@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar color="primary">
+      <span>Sobre</span>
+    </mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="about">
+    <p *ngIf="version">Release: <strong> {{ version }} </strong></p>
+    <p *ngIf="appEnvironment">App Environment:  <strong> {{ appEnvironment }} </strong></p>
+  </div>
+</mat-card-content>
+</mat-card>
