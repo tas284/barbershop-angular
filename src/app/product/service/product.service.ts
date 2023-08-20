@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Pipe } from '@angular/core';
 import { delay, first, Observable, take } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Product } from '../model/product';
@@ -18,6 +18,13 @@ export class ProductService {
       .pipe(
         first()
       );
+  }
+
+  search(value: string): Observable<Product[]>{
+    if(value == null || value == '' || value == undefined) {
+      return this.list();
+    }
+    return this.http.get<Product[]>(`${this.URI}/all/${value}`);
   }
 
   save(product: Product){

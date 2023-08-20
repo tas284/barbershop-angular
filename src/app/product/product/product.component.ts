@@ -13,6 +13,8 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+
+  labelProductSearch: string = "Pesquisa de Produtos";
   products$: Observable<Product[]> | null = null;
   displayedColumns = [ 'name', 'price', 'quantity', 'brand', 'status', 'createdAt', 'updatedAt', 'actions' ];
 
@@ -32,7 +34,7 @@ export class ProductComponent implements OnInit {
     this.products$ = this.service.list()
       .pipe(
         catchError(err => {
-          this.onMessage('Erro ao carregar a lista de clientes!', 10000);
+          this.onMessage('Erro ao carregar a lista de productos!', 10000);
           return of([]);
         })
       );
@@ -63,5 +65,9 @@ export class ProductComponent implements OnInit {
 
   onMessage(message: string, duration = 5000){
     this.snackBar.open(message, '', { duration: duration})
+  }
+
+  searchProduct(value: string) {
+    this.products$ = this.service.search(value)
   }
 }

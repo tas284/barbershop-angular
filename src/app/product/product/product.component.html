@@ -6,6 +6,9 @@
   </mat-card-header>
 
   <mat-card-content>
+
+    <app-search (filter)="searchProduct($event)" [labelSearch]="labelProductSearch"></app-search>
+
     <div *ngIf="products$ | async as products; else loading">
       <table mat-table [dataSource]="products" class="mat-elevation-z8">
 
