@@ -9,7 +9,6 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { SharedModule } from './shared/shared.module';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
-import { AboutComponent } from './about/about/about.component';
 
 registerLocaleData(ptBr)
 

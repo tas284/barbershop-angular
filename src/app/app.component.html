@@ -2,11 +2,12 @@
   <span>Hermestol Barbershop</span>
   <button mat-button [matMenuTriggerFor]="cadastros">Cadastros</button>
   <mat-menu #cadastros="matMenu">
-    <button mat-menu-item routerLink="product" routerLinkActive="product">Cadastro de Produtos</button>
-    <button mat-menu-item routerLink="person">Cadastro de Pessoas</button>
+    <button mat-menu-item routerLink="product" routerLinkActive="product">Produtos</button>
+    <button mat-menu-item routerLink="person">Pessoas</button>
   </mat-menu>
   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="order">Vendas</button>
     <button mat-menu-item routerLink="about">Sobre</button>
   </mat-menu>
 </mat-toolbar>
