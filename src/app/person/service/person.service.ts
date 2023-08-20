@@ -21,6 +21,13 @@ export class PersonService {
       );
   }
 
+  search(value: string): Observable<Person[]>{
+    if(value == null || value == '' || value == undefined) {
+      return this.list();
+    }
+    return this.http.get<Person[]>(`${this.URI}/all/${value}`);
+  }
+
   save(person: Person){
     return this.http.post<Person>(`${this.URI}`, person)
       .pipe(

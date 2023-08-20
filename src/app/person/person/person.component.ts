@@ -15,6 +15,7 @@ import { PersonService } from '../service/person.service';
 })
 export class PersonComponent implements OnInit{
 
+  labelProductSearch: string = "Pesquisa de Pessoas";
   people$: Observable<Person[]> | null = null;
   displayedColumns = [ 'firstName', 'phone', 'typePerson', 'actions' ];
 
@@ -65,5 +66,9 @@ export class PersonComponent implements OnInit{
 
   onMessage(message: string, duration = 5000){
     this.snackBar.open(message, '', { duration: duration})
+  }
+
+  searchPerson(value: string) {
+    this.people$ = this.service.search(value)
   }
 }
