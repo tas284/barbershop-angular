@@ -15,8 +15,7 @@ registerLocaleData(ptBr)
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
