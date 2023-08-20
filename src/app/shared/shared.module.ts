@@ -6,10 +6,12 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { PersonPipe } from './pipes/person.pipe';
 import { ProductPipe } from './pipes/product.pipe';
 import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     ErrorDialogComponent,
+    SearchComponent,
     PersonPipe,
     ProductPipe
   ],
@@ -21,6 +23,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker/datepick
   exports: [
     ErrorDialogComponent,
     DatepickerComponent,
+    SearchComponent,
     PersonPipe,
     ProductPipe
   ]

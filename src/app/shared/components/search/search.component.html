@@ -1,0 +1,4 @@
+<mat-form-field>
+  <mat-label> {{ labelSearch }} </mat-label>
+  <input matInput id="search" #keyword placeholder="Digite aqui ..." (keyup.enter)="search(keyword.value)">
+</mat-form-field>
