@@ -13,9 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class OrderComponent implements OnInit {
 
-  labelProductSearch: string = "Pesquisa de Vendas";
+  labelOrderSearch: string = "Pesquisa de Vendas";
   order$: Observable<Order[]> | null = null;
-  displayedColumns = [ 'code', 'customer', 'status', 'total', 'appointmentTime', 'actions' ];
+  displayedColumns = [ 'code', 'customerName', 'status', 'createdAt', 'total', 'actions' ];
 
   constructor(
     private service: OrderService,
@@ -65,7 +65,7 @@ export class OrderComponent implements OnInit {
     this.snackBar.open(message, '', { duration: duration})
   }
 
-  // searchOrder(value: string) {
-  //   this.people$ = this.service.search(value)
-  // }
+  searchOrder(value: string) {
+    this.order$ = this.service.search(value)
+  }
 }

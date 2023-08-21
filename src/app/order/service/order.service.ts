@@ -25,7 +25,7 @@ export class OrderService {
     if(value == null || value == '' || value == undefined) {
       return this.list();
     }
-    return this.http.get<Order[]>(`${this.URI}/all/${value}`);
+    return this.http.get<Order[]>(`${this.URI}/customer/${value}`);
   }
 
   save(order: Order){

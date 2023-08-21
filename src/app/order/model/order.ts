@@ -6,8 +6,8 @@ export interface Order {
   status: string,
   total: number,
   discount: number,
-  appointmentTime: Date,
-  endTime: Date
+  createdAt: Date,
+  updatedAt: Date
 }
 
 export interface Customer {
