@@ -37,11 +37,6 @@ export class OrderComponent implements OnInit {
           return of([]);
         })
       );
-
-    this.service.list()
-      .subscribe(
-        data => console.log(data)
-      )
   }
 
   onAdd() {
