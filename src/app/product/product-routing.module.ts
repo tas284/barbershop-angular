@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductResolverGuard } from '../guard/product-resolver.guard';
+import { ProductResolverGuard } from '../guard/product/product-resolver.guard';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductComponent } from './product/product.component';
 

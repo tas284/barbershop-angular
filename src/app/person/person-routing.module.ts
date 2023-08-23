@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PersonComponent } from './person/person.component';
 import { PersonFormComponent } from './person-form/person-form.component';
-import { PersonResolverGuard } from '../guard/person-resolver.guard';
+import { PersonResolverGuard } from '../guard/person/person-resolver.guard';
 
 const routes: Routes = [
   { path: '', component: PersonComponent },
