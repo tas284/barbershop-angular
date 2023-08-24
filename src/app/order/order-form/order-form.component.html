@@ -6,6 +6,17 @@
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Cliente</mat-label>
+        <input type="text" matInput [formControl]="searchCustomer" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let person of people$ | async" [value]="person" (click)="onClick()">
+            {{ person.firstName + " " + person.lastName }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
       <mat-form-field class="field-item">
         <mat-label>Codigo</mat-label>
         <input matInput placeholder="Codigo" formControlName="code">
@@ -31,10 +42,10 @@
         <input matInput placeholder="Desconto" formControlName="discount">
       </mat-form-field>
 
-      <!-- <mat-form-field class="field-item">
+      <mat-form-field class="field-item">
         <mat-label>Status da Venda</mat-label>
         <input matInput placeholder="Status da Venda" formControlName="status">
-      </mat-form-field> -->
+      </mat-form-field>
 
       <mat-form-field class="field-item">
         <mat-label>Status da Venda</mat-label>

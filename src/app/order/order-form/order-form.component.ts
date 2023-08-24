@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../service/order.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
+import { PersonService } from 'src/app/person/service/person.service';
+import { Person } from 'src/app/person/model/person';
+
+export interface User {
+  name: string;
+}
 
 @Component({
   selector: 'app-order-form',
@@ -13,9 +20,13 @@ import { Location } from '@angular/common';
 export class OrderFormComponent {
 
   form!: FormGroup;
+  searchCustomer = new FormControl<string>('');
+  people$?: Observable<Person[]>;
+
 
   constructor (
     private service: OrderService,
+    private personService: PersonService,
     private snackBar: MatSnackBar,
     private location: Location,
     private formBuilder: FormBuilder,
@@ -23,6 +34,7 @@ export class OrderFormComponent {
   ) {}
 
   ngOnInit(): void {
+
     const order = this.route.snapshot.data['order'];
     this.form = this.formBuilder.group({
       id: [order.id],
@@ -37,6 +49,27 @@ export class OrderFormComponent {
       updatedAt: [order.updatedAt],
       createdAt: [order.createdAt]
     });
+
+    this.people$ = this.searchCustomer.valueChanges
+      .pipe(
+        filter(value => value!.length >= 2),
+        distinctUntilChanged(),
+        debounceTime(400),
+        switchMap(
+          (data: any) => this.personService.search(data)
+        )
+      )
+  }
+
+  onClick() {
+    this.searchCustomer.valueChanges
+      .pipe(
+        tap(data => console.log(data))
+      ).subscribe()
+  }
+
+  displayFn(person: Person): string {
+    return person && person.firstName ? person.firstName + " " + person.lastName : '';
   }
 
   onSubmit() {
@@ -56,16 +89,7 @@ export class OrderFormComponent {
    return id === undefined ? true : false;
   }
 
-  // isActiveToBoolean(): void {
-  //   this.form.value.status = JSON.parse(this.form.value.status);
-  // }
-
-  // isActiveToString(status: boolean): string {
-  //   return status ? "true" : "false";
-  // }
-
-  onSave() {
-    //this.isActiveToBoolean();
+  onSave(){
     if(this.isNew()){
       this.service.save(this.form.value)
         .subscribe(
