@@ -1,1 +1,57 @@
-<p>order-form works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-toolbar color="primary">
+      <span>Cadastro de Venda</span>
+    </mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="field-item">
+        <mat-label>Codigo</mat-label>
+        <input matInput placeholder="Codigo" formControlName="code">
+      </mat-form-field>
+
+      <mat-form-field class="field-item">
+        <mat-label>Id Cliente</mat-label>
+        <input matInput placeholder="Id do Cliente" formControlName="customerId">
+      </mat-form-field>
+
+      <mat-form-field class="field-item">
+        <mat-label>Nome do Cliente</mat-label>
+        <input matInput placeholder="Nome do Cliente" formControlName="customerName">
+      </mat-form-field>
+
+      <mat-form-field class="field-item">
+        <mat-label>Telefone do Cliente</mat-label>
+        <input matInput placeholder="Telefone do Cliente" formControlName="customerPhone">
+      </mat-form-field>
+
+      <mat-form-field class="field-item">
+        <mat-label>Desconto</mat-label>
+        <input matInput placeholder="Desconto" formControlName="discount">
+      </mat-form-field>
+
+      <!-- <mat-form-field class="field-item">
+        <mat-label>Status da Venda</mat-label>
+        <input matInput placeholder="Status da Venda" formControlName="status">
+      </mat-form-field> -->
+
+      <mat-form-field class="field-item">
+        <mat-label>Status da Venda</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="open">Aberta</mat-option>
+          <mat-option value="close">Fechada</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="field-item">
+        <mat-label>Total da Venda</mat-label>
+        <input matInput placeholder="Total da Venda" formControlName="total">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+  </mat-card-actions>
+</mat-card>

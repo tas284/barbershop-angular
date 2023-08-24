@@ -1,8 +1,8 @@
 export interface Order {
   id: string,
   code: number,
-  customer: [Customer],
-  products: [OrderItem],
+  customer: Customer,
+  products: [OrderItem] | null,
   status: string,
   total: number,
   discount: number,

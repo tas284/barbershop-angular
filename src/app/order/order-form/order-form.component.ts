@@ -23,7 +23,6 @@ export class OrderFormComponent {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     const order = this.route.snapshot.data['order'];
     this.form = this.formBuilder.group({
       id: [order.id],
@@ -31,6 +30,7 @@ export class OrderFormComponent {
       customerId: [order.customer.id],
       customerName: [order.customer.name],
       customerPhone: [order.customer.phone],
+      products: [order.products],
       discount: [order.discount],
       status: [order.status],
       total: [order.total],
@@ -56,16 +56,16 @@ export class OrderFormComponent {
    return id === undefined ? true : false;
   }
 
-  isActiveToBoolean(): void {
-    this.form.value.status = JSON.parse(this.form.value.status);
-  }
+  // isActiveToBoolean(): void {
+  //   this.form.value.status = JSON.parse(this.form.value.status);
+  // }
 
-  isActiveToString(status: boolean): string {
-    return status ? "true" : "false";
-  }
+  // isActiveToString(status: boolean): string {
+  //   return status ? "true" : "false";
+  // }
 
   onSave() {
-    this.isActiveToBoolean();
+    //this.isActiveToBoolean();
     if(this.isNew()){
       this.service.save(this.form.value)
         .subscribe(
