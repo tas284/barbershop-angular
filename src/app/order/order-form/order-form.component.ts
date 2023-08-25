@@ -4,13 +4,10 @@ import { OrderService } from '../service/order.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
 import { PersonService } from 'src/app/person/service/person.service';
 import { Person } from 'src/app/person/model/person';
 
-export interface User {
-  name: string;
-}
 
 @Component({
   selector: 'app-order-form',
@@ -61,15 +58,17 @@ export class OrderFormComponent {
       )
   }
 
-  onClick() {
-    this.searchCustomer.valueChanges
-      .pipe(
-        tap(data => console.log(data))
-      ).subscribe()
+  selectedCustomer() {
+    const customer = this.searchCustomer.value as any
+    this.form.patchValue({
+      customerId: customer.id,
+      customerName: (customer.firstName + " " + customer.lastName).trim(),
+      customerPhone: customer.phone
+    })
   }
 
   displayFn(person: Person): string {
-    return person && person.firstName ? person.firstName + " " + person.lastName : '';
+    return person && person.firstName ? (person.firstName + " " + person.lastName).trim() : '';
   }
 
   onSubmit() {
